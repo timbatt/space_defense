@@ -18,8 +18,7 @@ sf::RenderWindow Game::window(sf::VideoMode(Game::WINDOW_W, Game::WINDOW_H), Gam
 
 void Game::init() {
     Game::window.setFramerateLimit(Game::FRAME_RATE);
-    Game::timeDelta = Game::clock.restart().asSeconds();
-
+    Game::resetTimeDelta();
     AudioLoader::load();
     TextureLoader::loadTextures();
 }

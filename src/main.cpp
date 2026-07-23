@@ -5,7 +5,7 @@
 
 #include "Tower.hpp"
 #include "Turret.hpp"
-#include "Bullets.hpp"
+#include "Entities.hpp"
 #include "Explosions.hpp"
 #include "Enemy.hpp"
 
@@ -20,8 +20,10 @@ int main()
         
     Turret turret(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
     turret.showHitbox();
+
     Enemy enemy(Vec2f(200, 200));
-    
+    Entities::add(enemy);
+
     /* Main Loop */
     while (Game::window.isOpen())
     {
@@ -31,7 +33,7 @@ int main()
         {
             if (event.type == sf::Event::Closed) {
                 Game::window.close();
-                Bullets::clear();
+                Entities::clear();
             }
         }
 
@@ -39,9 +41,8 @@ int main()
 
         Game::update();
 
-        enemy.update();
         turret.update();
-        Bullets::update();
+        Entities::update();
         Explosions::update();
     }
 }

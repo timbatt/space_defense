@@ -3,7 +3,7 @@
 #include "Turret.hpp"
 #include "Entity.hpp"
 #include "Bullet.hpp"
-#include "Bullets.hpp"
+#include "Entities.hpp"
 #include "AudioLoader.hpp"
 #include "Game.hpp"
 
@@ -58,7 +58,7 @@ void Turret::fire() {
     Vec2f muzzlePos = this->getMuzzlePosition();
     float bulletSpeed = 500;
     Bullet bullet(muzzlePos, this->getFiringVector(), bulletSpeed);
-    Bullets::add(bullet);
+    Entities::add(bullet);
     AudioLoader::turretFire.play();
     this->resetCooldown();
 }

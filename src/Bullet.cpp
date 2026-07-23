@@ -5,7 +5,7 @@
 #include "TextureLoader.hpp"
 #include "AudioLoader.hpp"
 #include "Game.hpp"
-#include "Bullets.hpp"
+#include "Entities.hpp"
 
 Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     Entity(pos, vector, Vec2f(5, 5), "", "Bullet"),
@@ -20,7 +20,7 @@ void Bullet::update(int bulletIndex) {
     Entity::update();
     if (this->hasHitWall()) {
         this->explode();
-        Bullets::bullets.erase(Bullets::bullets.begin() + bulletIndex);
+        Entities::bullets.erase(Entities::bullets.begin() + bulletIndex);
     }
 }
 
@@ -34,7 +34,7 @@ bool Bullet::hasHitWall() {
 
 void Bullet::explode() {
     int particleCount = 200;
-    int particleSpeed = 200.f;
+    int particleSpeed = 200;
     Explosion explosion(this->pos, particleCount, particleSpeed, sf::milliseconds(250));
     Explosions::add(explosion);
     AudioLoader::explosion.play();
