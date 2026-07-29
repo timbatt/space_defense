@@ -22,14 +22,15 @@ Entity(pos, Vec2f(0, 0), Vec2f(0, 0), "", "Explosion") {
 
 
 
-void Explosion::draw() {
-    if (this->isDead()) return;
-    
-    // Generate new particles on mouse click (left mouse button)
-    for (int i = 0; i < this->particleCount; ++i) {
-        Particle randParticle = this->randomParticle();
-        particles.push_back(randParticle);
+void Explosion::draw() { 
+    for (size_t i = 0; i < particles.size(); ++i) {
+        Particle& particle = particles[i];
+        float alpha = particle.lifetime.asMilliseconds() / 10 / (float)this->startTime.getElapsedTime().asMilliseconds();
+        particleSprite.setPosition(particle.pos);
+        particleSprite.setColor(sf::Color(255, 255, 255, alpha * 255));
+        Game::window.draw(particleSprite);
     }
+
 }
 
 Particle Explosion::randomParticle() {
@@ -43,33 +44,35 @@ Particle Explosion::randomParticle() {
     return particle;
 }
 
+void Explosion::initParticles() {
+    if (this->particles.size() >= this->particleCount) return;
+    for (int i = 0; i < this->particleCount; ++i) {
+        Particle randParticle = this->randomParticle();
+        particles.push_back(randParticle);
+    }
+}
+
 void Explosion::update() {
+    if (this->isDead()) return;
 
+    this->initParticles();
+    
     this->draw();
-
+    
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
-        particle.pos.x += particle.velocity.x * Game::timeDelta;
-        particle.pos.y += particle.velocity.y * Game::timeDelta;
-        
-        float alpha = particle.lifetime.asMilliseconds() / 10 / (float)this->startTime.getElapsedTime().asMilliseconds();
-
-        particleSprite.setPosition(particle.pos);
-        particleSprite.setColor(sf::Color(255, 255, 255, alpha * 255));
-        Game::window.draw(particleSprite);
-
-        particle.lifetime -= this->lifeDecrease;
-
-        if (particle.lifetime <= sf::Time::Zero) {
-            particles.erase(particles.begin() + i);
-            --i;
-        }
+        particle.update();
     }
     
-
-    sf::Time elapsed = this->startTime.getElapsedTime();
-    if (elapsed >= this->lifetime) {
+    if (this->startTime.getElapsedTime() >= this->lifetime) {
         this->die();
+        this->particles.clear();
     }
 
+    particles.erase(
+    std::remove_if(particles.begin(), particles.end(),
+        [](Particle& particle) {            
+            return particle.isDead();
+        }),
+    particles.end());
 }
