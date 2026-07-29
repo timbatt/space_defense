@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Bullet.hpp"
 #include "Explosion.hpp"
-#include "Explosions.hpp"
 #include "TextureLoader.hpp"
 #include "AudioLoader.hpp"
 #include "Game.hpp"
@@ -36,7 +35,6 @@ void Bullet::explode() {
     int particleCount = 200;
     int particleSpeed = 200;
     
-    Explosion explosion(this->pos, particleCount, particleSpeed, sf::milliseconds(250));
-    Explosions::add(explosion);
+    Entities::create<Explosion>(this->pos, particleCount, particleSpeed, sf::milliseconds(250));
     AudioLoader::explosion.play();
 }

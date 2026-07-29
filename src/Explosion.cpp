@@ -3,13 +3,13 @@
 #include <iostream>
 #include "Particle.hpp"
 #include "Explosion.hpp"
-#include "Explosions.hpp"
 #include "shorthand.hpp"
 #include "TextureLoader.hpp"
 #include "Game.hpp"
+#include "Entity.hpp"
 
-
-Explosion::Explosion(Vec2f pos, int particleCount, float particleSpeed, sf::Time lifetime) {
+Explosion::Explosion(Vec2f pos, int particleCount, float particleSpeed, sf::Time lifetime) :
+Entity(pos, Vec2f(0, 0), Vec2f(0, 0), "", "Explosion") {
     this->pos = pos;
     this->particleCount = particleCount;
     this->particleSpeed = particleSpeed;
@@ -23,7 +23,7 @@ Explosion::Explosion(Vec2f pos, int particleCount, float particleSpeed, sf::Time
 
 
 void Explosion::draw() {
-    if (this->isDone) return;
+    if (this->isDead()) return;
     
     // Generate new particles on mouse click (left mouse button)
     for (int i = 0; i < this->particleCount; ++i) {
@@ -43,7 +43,9 @@ Particle Explosion::randomParticle() {
     return particle;
 }
 
-void Explosion::update(int explosionIndex) {
+void Explosion::update() {
+
+    this->draw();
 
     for (size_t i = 0; i < particles.size(); ++i) {
         Particle& particle = particles[i];
@@ -67,8 +69,7 @@ void Explosion::update(int explosionIndex) {
 
     sf::Time elapsed = this->startTime.getElapsedTime();
     if (elapsed >= this->lifetime) {
-        this->isDone = true;
-        Explosions::explosions.erase(Explosions::explosions.begin() + explosionIndex);
+        this->die();
     }
 
 }
