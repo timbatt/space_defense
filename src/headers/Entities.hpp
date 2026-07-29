@@ -1,18 +1,31 @@
 #pragma once
+#include <memory>
+
 #include <SFML/Graphics.hpp>
 #include "Entity.hpp"
-#include "Bullet.hpp"
-#include "Enemy.hpp"
+#include <iostream>
 
 class Entities
 {
 public:
-    static std::vector<Enemy> enemies;
-    static std::vector<Bullet> bullets;
+    static std::vector<std::unique_ptr<Entity>> entities;
+    static int totalCount;
+
     static void update();
-
-    static void add(Enemy enemy);
-    static void add(Bullet bullet);
-
     static void clear();
+    static void init();
+    
+
+
+    template<typename T, typename... Args>
+    static T* create(Args&&... args) {
+        auto entity = std::make_unique<T>(std::forward<Args>(args)...);
+        T* ptr = entity.get();
+
+        Entities::entities.push_back(std::move(entity));        
+        
+        Entities::totalCount++;
+
+        return ptr;
+    }
 };

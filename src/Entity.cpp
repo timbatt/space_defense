@@ -1,11 +1,11 @@
 #include "Game.hpp"
 #include "Entity.hpp"
 #include <iostream>
+#include <memory>
+
 
 Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name)
-    : pos(pos), 
-    vel(vel),
-    size(size)
+    : pos(pos), vel(vel), size(size)
 {
     this->sprite.setPosition(pos);
     this->hitbox.setPosition(pos);
@@ -14,11 +14,14 @@ Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::s
     this->hitbox.setOutlineThickness(1.0f);
 
     if (!texturePath.empty()) {
-        this->texture.loadFromFile(texturePath);
-        this->sprite.setTexture(texture);
+        if (!this->texture.loadFromFile(texturePath)) {
+            std::cerr << "ERROR: Failed to load texture from " << texturePath << std::endl;
+        } else {
+            this->sprite.setTexture(this->texture);
+        }
     }
     
-    name.empty() ?  this->name = "Entity" : this->name = name;
+    this->name = name.empty() ? "Entity" : name;
 }
 
 void Entity::draw() {
@@ -50,9 +53,17 @@ void Entity::setPos(Vec2f pos) {
 }
 
 void Entity::showHitbox() {
-    isShowingHitbox = true;
+    this->isShowingHitbox = true;
 }
 
 void Entity::hideHitbox() {
-    isShowingHitbox = false;
+    this->isShowingHitbox = false;
+}
+
+void Entity::die() {
+    this->dead = true;
+}
+
+bool Entity::isDead() {
+    return this->dead;
 }

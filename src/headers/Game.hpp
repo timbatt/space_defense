@@ -9,6 +9,8 @@ public:
     static int WINDOW_H;
     static int FRAME_RATE;
 
+    static int MAX_ENTITY_COUNT;
+
     static sf::Clock clock;
     static float timeDelta;
     static sf::RenderWindow window;

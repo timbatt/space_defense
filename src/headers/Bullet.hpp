@@ -8,7 +8,7 @@ class Bullet : public Entity {
 public:
     float speed;
     Bullet(Vec2f pos, Vec2f vector, float speed);
-    void update(int bulletIndex);
+    void update();
     bool hasHitWall();
     void explode();
 };

@@ -8,7 +8,6 @@
 #include "Entities.hpp"
 #include "Explosions.hpp"
 #include "Enemy.hpp"
-
 #include "Game.hpp"
 
 
@@ -17,12 +16,10 @@ int main()
 {
 
     Game::init();
+    Entities::init();
         
-    Turret turret(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
-    turret.showHitbox();
-
-    Enemy enemy(Vec2f(200, 200));
-    Entities::add(enemy);
+    Entities::create<Turret>(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
+    Entities::create<Enemy>(Vec2f(200, 200));
 
     /* Main Loop */
     while (Game::window.isOpen())
@@ -40,8 +37,6 @@ int main()
         /* Updates and display */
 
         Game::update();
-
-        turret.update();
         Entities::update();
         Explosions::update();
     }

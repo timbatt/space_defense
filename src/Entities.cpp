@@ -1,33 +1,35 @@
-#include "Entities.hpp"
-#include "Bullet.hpp"
-#include "Enemy.hpp"
+#include <memory>
+#include <iostream>
 
-std::vector<Enemy> Entities::enemies;
-std::vector<Bullet> Entities::bullets;
+#include "Game.hpp"
+#include "Entities.hpp"
+#include "Entity.hpp"
+#include <algorithm>
+
+
+std::vector<std::unique_ptr<Entity>> Entities::entities;
+int Entities::totalCount = 0;
+
+void Entities::init() {
+    Entities::entities.reserve(Game::MAX_ENTITY_COUNT);
+}
 
 
 void Entities::update() {
-    for (int i = 0; i < Entities::enemies.size(); i++) {
-        Enemy& enemy = Entities::enemies.at(i);
-        enemy.update();
+    for (const auto& entity : Entities::entities) {
+        if (entity != nullptr) entity->update();
     }
 
-    for (int i = 0; i < Entities::bullets.size(); i++) {
-        Bullet& bullet = Entities::bullets.at(i);
-        bullet.update(i);
-    }
-}
 
+    Entities::entities.erase(
+    std::remove_if(Entities::entities.begin(), Entities::entities.end(),
+        [](const std::unique_ptr<Entity>& entity) {            
+            return entity == nullptr || entity->isDead();   
+        }),
+    Entities::entities.end());
 
-void Entities::add(Enemy enemy) {
-    Entities::enemies.push_back(enemy);
-}
-
-void Entities::add(Bullet bullet) {
-    Entities::bullets.push_back(bullet);
 }
 
 void Entities::clear() {
-    Entities::enemies.clear();
-    Entities::bullets.clear();
+    Entities::entities.clear();
 }

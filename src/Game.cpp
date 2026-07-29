@@ -9,6 +9,9 @@ const char* Game::NAME = "Tower Defense";
 int Game::WINDOW_H = 800;
 int Game::WINDOW_W = 1200;
 int Game::FRAME_RATE = 60;
+
+int Game::MAX_ENTITY_COUNT = 128;
+
 float Game::timeDelta;
 
 
