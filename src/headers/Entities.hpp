@@ -8,7 +8,7 @@
 class Entities
 {
 public:
-    static std::vector<std::unique_ptr<Entity>> entities;
+    static std::vector<std::unique_ptr<Entity>> all;
     static int totalCount;
 
     static void update();
@@ -22,7 +22,7 @@ public:
         auto entity = std::make_unique<T>(std::forward<Args>(args)...);
         T* ptr = entity.get();
 
-        Entities::entities.push_back(std::move(entity));        
+        Entities::all.push_back(std::move(entity));        
         
         Entities::totalCount++;
 

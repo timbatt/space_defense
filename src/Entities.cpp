@@ -7,29 +7,29 @@
 #include <algorithm>
 
 
-std::vector<std::unique_ptr<Entity>> Entities::entities;
+std::vector<std::unique_ptr<Entity>> Entities::all;
 int Entities::totalCount = 0;
 
 void Entities::init() {
-    Entities::entities.reserve(Game::MAX_ENTITY_COUNT);
+    Entities::all.reserve(Game::MAX_ENTITY_COUNT);
 }
 
 
 void Entities::update() {
-    for (const auto& entity : Entities::entities) {
+    for (const auto& entity : Entities::all) {
         if (entity != nullptr) entity->update();
     }
 
 
-    Entities::entities.erase(
-    std::remove_if(Entities::entities.begin(), Entities::entities.end(),
+    Entities::all.erase(
+    std::remove_if(Entities::all.begin(), Entities::all.end(),
         [](const std::unique_ptr<Entity>& entity) {            
             return entity == nullptr || entity->isDead();   
         }),
-    Entities::entities.end());
+    Entities::all.end());
 
 }
 
 void Entities::clear() {
-    Entities::entities.clear();
+    Entities::all.clear();
 }
