@@ -7,6 +7,7 @@
 #include "Tower.hpp"
 #include "Turret.hpp"
 #include "Entities.hpp"
+#include "Particles.hpp"
 #include "Enemy.hpp"
 #include "Game.hpp"
 
@@ -33,6 +34,7 @@ int main()
 
     Game::init();
     Entities::init();
+    Particles::init();
         
     Entities::create<Turret>(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
 
@@ -59,5 +61,6 @@ int main()
 
         Game::update();
         Entities::update();
+        Particles::update();
     }
 }

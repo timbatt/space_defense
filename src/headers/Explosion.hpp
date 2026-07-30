@@ -9,12 +9,8 @@
 
 class Explosion : public Entity {
 private:
-    int particleCount;
+    int maxParticleCount;
     float particleSpeed;
-
-    std::vector<Particle> particles;
-    sf::Texture particleTexture;
-    sf::Sprite particleSprite;
     sf::Time lifeDecrease;
     sf::Clock startTime;
     sf::Time lifetime;
@@ -25,5 +21,5 @@ public:
     void update();
     void initParticles();
 
-    Particle randomParticle();
+    void randomParticle();
 };

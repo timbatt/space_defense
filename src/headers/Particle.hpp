@@ -7,19 +7,25 @@ class Particle {
 public:
     sf::Time lifetime;
     sf::Clock startTime;
-    Vec2f velocity;
+    sf::RectangleShape hitbox;
+
+    Vec2f vel;
     Vec2f pos;
 
     bool dead;
 
 
-    Particle(Vec2f pos, Vec2f velocity, sf::Time lifetime);
+    Particle(Vec2f pos, Vec2f vel, Vec2f size, sf::Time lifetime);
     virtual ~Particle() = default;
-
-    void update();
 
     void die();
     bool isDead();
+
+    Vec2f getPos();
+    
+    virtual void update();
+    virtual void move();
+    virtual void draw();
 };
 
 
