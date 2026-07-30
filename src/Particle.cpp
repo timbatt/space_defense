@@ -11,12 +11,11 @@ Particle::Particle(Vec2f pos, Vec2f vel, Vec2f size, sf::Time lifetime) {
     this->vel = vel;
     this->lifetime = lifetime;
     this->startTime = sf::Clock();
+    this->dead = false;
 
     this->hitbox.setPosition(pos);
     this->hitbox.setSize(size);
-    this->hitbox.setOutlineColor(sf::Color::Red);
-    this->hitbox.setFillColor(sf::Color(100, 50, 50));
-    this->hitbox.setOutlineThickness(1.0f);
+    this->hitbox.setFillColor(sf::Color(235, 97, 52));
 }
 
 

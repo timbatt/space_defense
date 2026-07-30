@@ -5,7 +5,7 @@
 
 
 Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name)
-    : pos(pos), vel(vel), size(size)
+    : pos(pos), vel(vel), size(size), dead(false)
 {
     this->sprite.setPosition(pos);
     this->hitbox.setPosition(pos);
