@@ -29,6 +29,6 @@ public:
     void showHitbox();
     void hideHitbox();
 
-    void die();
+    virtual void die();
     bool isDead();
 };

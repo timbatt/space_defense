@@ -14,13 +14,15 @@ class Entities
 public:
     static std::vector<std::string> names;
     static EntityPtr_Vector_Map map;
-
+    
     static int totalCount;
 
     static void update();
     static void clear();
     static void init();
-    
+
+    static void checkCollisions();
+    static void checkBulletEnemyCollisions();
 
 
     template<typename T, typename... Args>

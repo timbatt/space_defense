@@ -17,8 +17,8 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
 
 void Bullet::update() {
     Entity::update();
+
     if (this->hasHitWall()) {
-        this->explode();
         this->die();
     }
 }
@@ -30,6 +30,12 @@ bool Bullet::hasHitWall() {
 
     return isCollision;
 }
+
+void Bullet::die() {
+    this->explode();
+    Entity::die();
+}
+
 
 void Bullet::explode() {
     int particleCount = 200;

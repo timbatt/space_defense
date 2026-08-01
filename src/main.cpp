@@ -38,8 +38,9 @@ int main()
         
     Entities::create<Turret>(Game::WINDOW_W / 2, Game::WINDOW_H / 2 + Game::WINDOW_H / 4, 64);
 
-    Enemy* enemy = Entities::create<Enemy>(Vec2f(200, 200));
-    
+    for (int i = 1; i <= 20; i++) {
+        Entities::create<Enemy>(Vec2f((50 * i) - 200, 100));
+    }
 
 
     /* Main Loop */

@@ -10,4 +10,5 @@ public:
     void update();
     bool hasHitWall();
     void explode();
+    void die();
 };

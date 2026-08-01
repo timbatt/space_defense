@@ -19,8 +19,33 @@ void Entities::init() {
     // Currently not needed, however will probably instantiate entities map with static values in the future.
 }
 
+void Entities::checkCollisions() {
+    Entities::checkBulletEnemyCollisions();
+}
+
+
+void Entities::checkBulletEnemyCollisions() {
+    auto bulletIt = Entities::map.find("Bullet");
+    if (bulletIt == Entities::map.end()) return;
+
+    for (auto& bullet : bulletIt->second) {
+        auto enemyIt = Entities::map.find("Enemy");
+        if (enemyIt == Entities::map.end()) continue;
+
+        for (auto& enemy : enemyIt->second) {
+            if (bullet->hitbox.getGlobalBounds().intersects(enemy->hitbox.getGlobalBounds()))
+            {
+                enemy->die();
+                bullet->die();
+            }
+        }
+
+    }
+}
 
 void Entities::update() {
+    Entities::checkCollisions();
+
     for (std::string key : Entities::names) {
         auto it = Entities::map.find(key);
         if (it == Entities::map.end()) continue;
@@ -39,6 +64,8 @@ void Entities::update() {
         Entities::map[key].end());    
     }
 }
+
+
 
 void Entities::clear() {
     Entities::map.clear();
