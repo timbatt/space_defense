@@ -9,7 +9,7 @@ public:
     static int WINDOW_H;
     static int FRAME_RATE;
 
-    static int MAX_ENTITY_COUNT;
+    static int MAX_ENTITY_PER_TYPE;
     static int MAX_PARTICLE_COUNT;
 
     static sf::Clock clock;

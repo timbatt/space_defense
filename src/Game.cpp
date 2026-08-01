@@ -10,7 +10,7 @@ int Game::WINDOW_H = 800;
 int Game::WINDOW_W = 1200;
 int Game::FRAME_RATE = 60;
 
-int Game::MAX_ENTITY_COUNT = 128;
+int Game::MAX_ENTITY_PER_TYPE = 128;
 int Game::MAX_PARTICLE_COUNT = 1024;
 
 float Game::timeDelta;
