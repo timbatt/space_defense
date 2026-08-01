@@ -13,6 +13,8 @@ Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::s
     this->hitbox.setOutlineColor(sf::Color::Red);
     this->hitbox.setOutlineThickness(1.0f);
 
+    this->health = 100;
+
     if (!texturePath.empty()) {
         if (!this->texture.loadFromFile(texturePath)) {
             std::cerr << "ERROR: Failed to load texture from " << texturePath << std::endl;
@@ -58,6 +60,12 @@ void Entity::showHitbox() {
 
 void Entity::hideHitbox() {
     this->isShowingHitbox = false;
+}
+
+
+void Entity::takeDamage(int damageValue) {
+    this->health -= damageValue;
+    if (this->health <= 0) this->die();
 }
 
 void Entity::die() {

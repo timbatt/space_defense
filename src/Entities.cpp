@@ -35,7 +35,7 @@ void Entities::checkBulletEnemyCollisions() {
         for (auto& enemy : enemyIt->second) {
             if (bullet->hitbox.getGlobalBounds().intersects(enemy->hitbox.getGlobalBounds()))
             {
-                enemy->die();
+                enemy->takeDamage(50);
                 bullet->die();
             }
         }

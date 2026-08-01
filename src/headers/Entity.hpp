@@ -11,6 +11,8 @@ public:
     bool isShowingHitbox = false;
     bool dead = false;
 
+    int health;
+
     std::string name;
     sf::Texture texture;
     sf::Sprite sprite;
@@ -31,4 +33,6 @@ public:
 
     virtual void die();
     bool isDead();
+
+    void takeDamage(int damageValue);
 };
