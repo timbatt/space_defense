@@ -24,6 +24,8 @@ public:
     static void checkCollisions();
     static void checkBulletEnemyCollisions();
 
+    static void clearDeadEntitiesByType(std::string entityType);
+
 
     template<typename T, typename... Args>
     static T* create(Args&&... args) {
