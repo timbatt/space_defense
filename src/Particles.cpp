@@ -1,6 +1,6 @@
 #include <memory>
 #include <iostream>
-#include "Game.hpp"
+#include "Settings.hpp"
 #include "Particles.hpp"
 
 
@@ -8,7 +8,7 @@ std::vector<std::unique_ptr<Particle>> Particles::all;
 int Particles::totalCount = 0;
 
 void Particles::init() {
-    Particles::all.reserve(Game::MAX_PARTICLE_COUNT);
+    Particles::all.reserve(Settings::MAX_PARTICLE_COUNT);
 }
 
 

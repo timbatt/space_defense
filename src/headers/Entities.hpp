@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <iostream>
 #include "Entity.hpp"
-#include "Game.hpp"
+#include "Settings.hpp"
 
 #define EntityVector std::vector<std::unique_ptr<Entity>>
 #define EntityPtr_Vector_Map std::unordered_map<std::string, EntityVector>
@@ -34,7 +34,7 @@ public:
         
         if (Entities::map.find(entity->name) == Entities::map.end()) {
             map[entity->name] = EntityVector();
-            map[entity->name].reserve(Game::MAX_ENTITY_PER_TYPE);
+            map[entity->name].reserve(Settings::MAX_ENTITY_PER_TYPE);
             Entities::names.push_back(entity->name);
         } 
         

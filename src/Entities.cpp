@@ -1,7 +1,5 @@
 #include <memory>
 #include <iostream>
-
-#include "Game.hpp"
 #include "Entities.hpp"
 #include "Entity.hpp"
 #include <algorithm>

@@ -3,7 +3,7 @@
 #include "Explosion.hpp"
 #include "TextureLoader.hpp"
 #include "AudioLoader.hpp"
-#include "Game.hpp"
+#include "Settings.hpp"
 #include "Entities.hpp"
 
 Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
@@ -25,8 +25,8 @@ void Bullet::update() {
 
 bool Bullet::hasHitWall() {
     bool isCollision = !(
-        (this->pos.x <= Game::WINDOW_W && this->pos.x > 0) && 
-        (this->pos.y <= Game::WINDOW_H && this->pos.y > 0));
+        (this->pos.x <= Settings::WINDOW_W && this->pos.x > 0) && 
+        (this->pos.y <= Settings::WINDOW_H && this->pos.y > 0));
 
     return isCollision;
 }

@@ -6,7 +6,6 @@
 #include "Explosion.hpp"
 #include "shorthand.hpp"
 #include "TextureLoader.hpp"
-#include "Game.hpp"
 #include "Entity.hpp"
 
 Explosion::Explosion(Vec2f pos, int maxParticleCount, float particleSpeed, sf::Time lifetime) :
