@@ -1,5 +1,5 @@
-#include <math.h>
 #include <iostream>
+#include <math.h>
 #include "Turret.hpp"
 #include "Entity.hpp"
 #include "Entities.hpp"

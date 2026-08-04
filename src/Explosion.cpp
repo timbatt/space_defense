@@ -1,12 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <math.h>
 #include <iostream>
-#include "Particle.hpp"
+#include "Entity.hpp"
 #include "Particles.hpp"
 #include "Explosion.hpp"
 #include "shorthand.hpp"
-#include "TextureLoader.hpp"
-#include "Entity.hpp"
 
 Explosion::Explosion(Vec2f pos, int maxParticleCount, float particleSpeed, sf::Time lifetime) :
 Entity(pos, Vec2f(0, 0), Vec2f(0, 0), "", "Explosion") {

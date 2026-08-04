@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
-#include <math.h>
 #include <iostream>
-#include "shorthand.hpp"
+#include <math.h>
 #include "Game.hpp"
 #include "Particle.hpp"
+#include "shorthand.hpp"
 
 
 Particle::Particle(Vec2f pos, Vec2f vel, Vec2f size, sf::Time lifetime) {

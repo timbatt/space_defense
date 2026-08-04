@@ -1,10 +1,8 @@
-#include <memory>
 #include <iostream>
+#include <memory>
+#include <unordered_map>
 #include "Entities.hpp"
 #include "Entity.hpp"
-#include <algorithm>
-#include <ranges>
-#include <unordered_map>
 
 
 EntityPtr_Vector_Map Entities::map;

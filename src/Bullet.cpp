@@ -1,10 +1,10 @@
 #include <iostream>
+#include "Settings.hpp"
+#include "TextureLoader.hpp"
+#include "Entities.hpp"
 #include "Bullet.hpp"
 #include "Explosion.hpp"
-#include "TextureLoader.hpp"
 #include "AudioLoader.hpp"
-#include "Settings.hpp"
-#include "Entities.hpp"
 
 Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
     Entity(pos, vector, Vec2f(5, 5), "", "Bullet"),

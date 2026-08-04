@@ -1,8 +1,8 @@
+#include <SFML/Graphics.hpp>
+#include "Settings.hpp"
+#include "Game.hpp"
 #include "AudioLoader.hpp"
 #include "TextureLoader.hpp"
-#include "Game.hpp"
-#include "Settings.hpp"
-#include <SFML/Graphics.hpp>
 
 
 

@@ -1,7 +1,7 @@
-#include "Game.hpp"
-#include "Entity.hpp"
 #include <iostream>
 #include <memory>
+#include "Game.hpp"
+#include "Entity.hpp"
 
 
 Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name)

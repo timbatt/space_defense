@@ -4,12 +4,12 @@
 #include <string.h>
 #include <iostream>
 
-#include "Tower.hpp"
-#include "Turret.hpp"
+#include "Game.hpp"
 #include "Entities.hpp"
 #include "Particles.hpp"
+#include "Tower.hpp"
+#include "Turret.hpp"
 #include "Enemy.hpp"
-#include "Game.hpp"
 
 
 

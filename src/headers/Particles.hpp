@@ -1,9 +1,9 @@
 #pragma once
-#include <memory>
 
+#include <iostream>
+#include <memory>
 #include <SFML/Graphics.hpp>
 #include "Particle.hpp"
-#include <iostream>
 
 class Particles
 {

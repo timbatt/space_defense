@@ -1,8 +1,9 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
-#include "shorthand.hpp"
 #include "Entity.hpp"
 #include "Audio.hpp"
+#include "shorthand.hpp"
 
 class Turret : public Entity {
 private:

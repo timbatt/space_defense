@@ -1,5 +1,7 @@
-#include "Audio.hpp"
+#pragma once
+
 #include <SFML/Audio.hpp>
+#include "Audio.hpp"
 
 
 class AudioLoader {

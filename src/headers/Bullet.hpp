@@ -1,7 +1,7 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include "Entity.hpp"
-#include "Audio.hpp"
 
 class Bullet : public Entity {
 public:

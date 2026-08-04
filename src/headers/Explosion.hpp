@@ -1,10 +1,10 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <ctime>
-#include "shorthand.hpp"
-#include "Particle.hpp"
 #include "Entity.hpp"
+#include "shorthand.hpp"
 
 
 class Explosion : public Entity {

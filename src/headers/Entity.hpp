@@ -1,7 +1,7 @@
 #pragma once
 
-#include "shorthand.hpp"
 #include <SFML/Graphics.hpp>
+#include "shorthand.hpp"
 
 class Entity {
 public:
