@@ -8,7 +8,6 @@ public:
     Vec2f pos;
     Vec2f size;
     Vec2f vel;
-    bool isShowingHitbox = false;
     bool dead = false;
 
     int health;
@@ -23,15 +22,12 @@ public:
     
     virtual void update();
     virtual void die();
-    
+
     void draw();
     void move();
     
     void setPos(Vec2f pos);
     Vec2f getPos();
-
-    void showHitbox();
-    void hideHitbox();
 
     bool isDead();
 

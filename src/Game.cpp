@@ -20,6 +20,8 @@ float Game::timeDelta;
 sf::Clock Game::clock;
 sf::RenderWindow Game::window(sf::VideoMode(Settings::WINDOW_W, Settings::WINDOW_H), Settings::NAME);
 
+bool Game::doShowHitboxes = false;
+
 
 void Game::init() {
     Game::window.setFramerateLimit(Settings::FRAME_RATE);
@@ -36,4 +38,12 @@ void Game::update() {
     Game::window.display();
     Game::window.clear();
     Game::resetTimeDelta();
+}
+
+void Game::showHitboxes() {
+    Game::doShowHitboxes = true;
+}
+
+void Game::hideHitboxes() {
+    Game::doShowHitboxes = false;
 }

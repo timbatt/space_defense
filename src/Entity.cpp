@@ -32,7 +32,7 @@ void Entity::update() {
 
 
 void Entity::draw() {
-    if (isShowingHitbox) Game::window.draw(hitbox);
+    if (Game::doShowHitboxes) Game::window.draw(hitbox);
     Game::window.draw(sprite);
 }
 
@@ -64,17 +64,6 @@ void Entity::setPos(Vec2f pos) {
     this->sprite.setPosition(pos);
     this->hitbox.setPosition(pos);
 }
-
-
-void Entity::showHitbox() {
-    this->isShowingHitbox = true;
-}
-
-
-void Entity::hideHitbox() {
-    this->isShowingHitbox = false;
-}
-
 
 void Entity::takeDamage(int damageValue) {
     this->health -= damageValue;

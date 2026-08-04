@@ -35,6 +35,8 @@ int main()
     Game::init();
     Entities::init();
     Particles::init();
+
+    Game::showHitboxes();
         
     Entities::create<Turret>(Settings::WINDOW_W / 2, Settings::WINDOW_H / 2 + Settings::WINDOW_H / 4, 64);
 

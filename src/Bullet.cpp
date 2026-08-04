@@ -12,7 +12,6 @@ Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
 {
     this->vel = Vec2f(vector.x * speed, vector.y * speed);
     this->sprite.setTexture(TextureLoader::particleTexture);
-    this->showHitbox();
 }
 
 void Bullet::update() {
