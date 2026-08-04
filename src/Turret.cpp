@@ -36,10 +36,10 @@ void Turret::update() {
 
     // Calculate angle in radians between line and mouse position
     this->angleRads = std::atan2(worldMousePos.y - pos.y, worldMousePos.x - pos.x);
-    this->angle = angleRads * 180.0f / 3.1459265f;
+    this->angle = angleRads * 180.0f / M_PI;
     this->muzzlePos = this->getMuzzlePosition();
     this->sprite.setRotation(this->angle);
-    this->hitbox.setRotation(this->angle);
+    this->hitbox.setRotation(this->angle - 90);
 
     if (this->cooldown > sf::Time::Zero) {
         this->cooldown -= sf::seconds(Game::timeDelta);
