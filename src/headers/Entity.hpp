@@ -20,10 +20,12 @@ public:
 
     Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name);
     virtual ~Entity() = default;
-
+    
+    virtual void update();
+    virtual void die();
+    
     void draw();
     void move();
-    virtual void update();
     
     void setPos(Vec2f pos);
     Vec2f getPos();
@@ -31,7 +33,6 @@ public:
     void showHitbox();
     void hideHitbox();
 
-    virtual void die();
     bool isDead();
 
     void takeDamage(int damageValue);

@@ -5,15 +5,13 @@
 
 
 Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name)
-    : pos(pos), vel(vel), size(size), dead(false)
+    : pos(pos), vel(vel), size(size), dead(false), health(100)
 {
     this->sprite.setPosition(pos);
     this->hitbox.setPosition(pos);
     this->hitbox.setSize(size);
     this->hitbox.setOutlineColor(sf::Color::Red);
     this->hitbox.setOutlineThickness(1.0f);
-
-    this->health = 100;
 
     if (!texturePath.empty()) {
         if (!this->texture.loadFromFile(texturePath)) {
@@ -26,9 +24,26 @@ Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::s
     this->name = name.empty() ? "Entity" : name;
 }
 
+
+void Entity::update() {
+    this->move();
+    this->draw();
+}
+
+
 void Entity::draw() {
     if (isShowingHitbox) Game::window.draw(hitbox);
     Game::window.draw(sprite);
+}
+
+
+void Entity::die() {
+    this->dead = true;
+}
+
+
+bool Entity::isDead() {
+    return this->dead;
 }
 
 
@@ -38,15 +53,11 @@ void Entity::move() {
     this->pos = this->getPos();
 }
 
-void Entity::update() {
-    this->move();
-    this->draw();
-}
-
 
 Vec2f Entity::getPos() {
     return this->hitbox.getPosition();;
 }
+
 
 void Entity::setPos(Vec2f pos) {
     this->pos = pos;
@@ -54,9 +65,11 @@ void Entity::setPos(Vec2f pos) {
     this->hitbox.setPosition(pos);
 }
 
+
 void Entity::showHitbox() {
     this->isShowingHitbox = true;
 }
+
 
 void Entity::hideHitbox() {
     this->isShowingHitbox = false;
@@ -66,12 +79,4 @@ void Entity::hideHitbox() {
 void Entity::takeDamage(int damageValue) {
     this->health -= damageValue;
     if (this->health <= 0) this->die();
-}
-
-void Entity::die() {
-    this->dead = true;
-}
-
-bool Entity::isDead() {
-    return this->dead;
 }
