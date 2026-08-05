@@ -4,15 +4,15 @@
 #include "Entity.hpp"
 
 
-Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name)
-    : pos(pos), vel(vel), size(size), dead(false), health(100)
+Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name):
+pos(pos), vel(vel), size(size), dead(false), health(100)
 {
+    
     this->sprite.setPosition(pos);
     this->hitbox.setPosition(pos);
     this->hitbox.setSize(size);
     this->hitbox.setOutlineColor(sf::Color::Red);
     this->hitbox.setOutlineThickness(1.0f);
-
     if (!texturePath.empty()) {
         if (!this->texture.loadFromFile(texturePath)) {
             std::cerr << "ERROR: Failed to load texture from " << texturePath << std::endl;
@@ -20,12 +20,62 @@ Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::s
             this->sprite.setTexture(this->texture);
         }
     }
-    
+    this->name = name.empty() ? "Entity" : name;
+}
+
+// Animation constructor
+Entity::Entity(
+    Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name, 
+    int frameCount, int frameSize, Vec2i frameStart, int animationTime
+): 
+pos(pos), vel(vel), size(size), dead(false), health(100), hasSpriteAnimation(true),
+frameSize(frameSize), frameCount(frameCount), animationTime(animationTime)
+{   
+    this->sprite.setPosition(pos);
+    this->hitbox.setPosition(pos);
+    this->hitbox.setSize(size);
+    this->hitbox.setOutlineColor(sf::Color::Red);
+    this->hitbox.setOutlineThickness(1.0f);
+    if (!texturePath.empty()) {
+        if (!this->texture.loadFromFile(texturePath)) {
+            std::cerr << "ERROR: Failed to load texture from " << texturePath << std::endl;
+        } else {
+            this->sprite.setTexture(this->texture);
+        }
+    }
+
+    this->currentFrame = sf::IntRect(frameStart, Vec2i(frameSize, frameSize));
+    this->animationClock = sf::Clock();
     this->name = name.empty() ? "Entity" : name;
 }
 
 
+void Entity::animateFrames() {
+    this->currentFrame.top = this->currentFrameIdx * this->frameSize;
+    this->sprite.setTextureRect(this->currentFrame);
+
+    if (this->animationClock.getElapsedTime().asMilliseconds() > this->animationTime) {
+        this->currentFrameIdx++;
+        this->animationClock.restart();
+    }
+
+    if (this->currentFrameIdx > this->frameCount) {
+        this->currentFrameIdx = 0;
+    }
+}
+
+void Entity::setAnimation(int frameCount, int frameSize, Vec2i frameStart, int animationTime) {
+    this->currentFrameIdx = 0;
+    this->hasSpriteAnimation = true;
+    this->frameCount = frameCount;
+    this->frameSize = frameSize;
+    this->currentFrame = sf::IntRect(frameStart, Vec2i(frameSize, frameSize));
+    this->animationTime = animationTime;
+    this->animationClock = sf::Clock();
+}
+
 void Entity::update() {
+    if (this->hasSpriteAnimation) this->animateFrames();
     this->move();
     this->draw();
 }

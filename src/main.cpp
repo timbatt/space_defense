@@ -40,10 +40,29 @@ int main()
         
     Entities::create<Turret>(Settings::WINDOW_W / 2, Settings::WINDOW_H / 2 + Settings::WINDOW_H / 4, 64);
 
-    for (int i = 1; i <= 20; i++) {
-        Entities::create<Enemy>(Vec2f((50 * i) - 200, 100));
-    }
+    
 
+    /**
+     * Test animation
+     */
+    // int frameIdx = 0;
+    // int frameSize = 16;
+    // int frameCount = 7;
+    // int animationTime = 75;
+    // Vec2i frameStart = Vec2i(0, 0);
+    // sf::Clock animationClock;
+
+    // Entity* fire = Entities::create<Entity>(
+    //     Vec2f(200, 200), Vec2f(0, 0), Vec2f(frameSize * 3, frameSize * 3), "resources/fire.png", "Fire"
+    // );
+
+    // fire->setAnimation(frameCount, frameSize, frameStart, animationTime);
+    // fire->sprite.scale(Vec2f(3, 3));
+
+    for (int i = 1; i <= 20; i++) {
+        Enemy* enemy = Entities::create<Enemy>(Vec2f((50 * i) - 200, 100));
+        // enemy->setAnimation(frameCount, frameSize, frameStart, animationTime);
+    }
 
     /* Main Loop */
     while (Game::window.isOpen())
