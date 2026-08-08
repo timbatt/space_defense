@@ -45,7 +45,6 @@ int main()
     /**
      * Test animation
      */
-    // int frameIdx = 0;
     // int frameSize = 16;
     // int frameCount = 7;
     // int animationTime = 75;

@@ -8,6 +8,8 @@ Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::s
 pos(pos), vel(vel), size(size), dead(false), health(100)
 {
     
+    this->name = name.empty() ? "Entity" : name;
+
     this->sprite.setPosition(pos);
     this->hitbox.setPosition(pos);
     this->hitbox.setSize(size);
@@ -20,33 +22,21 @@ pos(pos), vel(vel), size(size), dead(false), health(100)
             this->sprite.setTexture(this->texture);
         }
     }
-    this->name = name.empty() ? "Entity" : name;
+    
 }
 
 // Animation constructor
 Entity::Entity(
     Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name, 
     int frameCount, int frameSize, Vec2i frameStart, int animationTime
-): 
-pos(pos), vel(vel), size(size), dead(false), health(100), hasSpriteAnimation(true),
-frameSize(frameSize), frameCount(frameCount), animationTime(animationTime)
+):
+Entity(pos, vel, size, texturePath, name)
 {   
-    this->sprite.setPosition(pos);
-    this->hitbox.setPosition(pos);
-    this->hitbox.setSize(size);
-    this->hitbox.setOutlineColor(sf::Color::Red);
-    this->hitbox.setOutlineThickness(1.0f);
-    if (!texturePath.empty()) {
-        if (!this->texture.loadFromFile(texturePath)) {
-            std::cerr << "ERROR: Failed to load texture from " << texturePath << std::endl;
-        } else {
-            this->sprite.setTexture(this->texture);
-        }
-    }
-
+    this->frameSize = frameSize;
+    this->frameCount = frameCount; 
+    this->animationTime = animationTime;
     this->currentFrame = sf::IntRect(frameStart, Vec2i(frameSize, frameSize));
     this->animationClock = sf::Clock();
-    this->name = name.empty() ? "Entity" : name;
 }
 
 
