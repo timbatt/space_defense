@@ -28,9 +28,9 @@ public:
     sf::Sprite sprite;
     sf::RectangleShape hitbox;
 
-    Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name);
+    Entity(Vec2f pos, Vec2f vel, Vec2f size, sf::Texture& texture, std::string name);
     Entity(
-        Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name, 
+        Vec2f pos, Vec2f vel, Vec2f size, sf::Texture& texture, std::string name, 
         int frameCount, int frameSize, Vec2i frameStart, int animationTime
     );
 

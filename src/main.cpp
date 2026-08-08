@@ -7,7 +7,6 @@
 #include "Game.hpp"
 #include "Entities.hpp"
 #include "Particles.hpp"
-#include "Tower.hpp"
 #include "Turret.hpp"
 #include "Enemy.hpp"
 
@@ -66,7 +65,7 @@ int main()
     /* Main Loop */
     while (Game::window.isOpen())
     {
-        // print_memory_usage();
+        print_memory_usage();
 
         /* Events */
         sf::Event event;

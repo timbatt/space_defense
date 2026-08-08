@@ -5,9 +5,10 @@
 #include "Bullet.hpp"
 #include "Explosion.hpp"
 #include "AudioLoader.hpp"
+#include "TextureLoader.hpp"
 
 Bullet::Bullet(Vec2f pos, Vec2f vector, float speed) :
-    Entity(pos, vector, Vec2f(5, 5), "", "Bullet"),
+    Entity(pos, vector, Vec2f(5, 5), TextureLoader::particleTexture, "Bullet"),
     speed(speed)
 {
     this->vel = Vec2f(vector.x * speed, vector.y * speed);

@@ -4,10 +4,11 @@
 #include "Entity.hpp"
 #include "Particles.hpp"
 #include "Explosion.hpp"
+#include "TextureLoader.hpp"
 #include "shorthand.hpp"
 
 Explosion::Explosion(Vec2f pos, int maxParticleCount, float particleSpeed, sf::Time lifetime) :
-Entity(pos, Vec2f(0, 0), Vec2f(0, 0), "", "Explosion") {
+Entity(pos, Vec2f(0, 0), Vec2f(0, 0), TextureLoader::nullTexture, "Explosion") {
     this->pos = pos;
     this->maxParticleCount = maxParticleCount;
     this->particleSpeed = particleSpeed;

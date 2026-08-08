@@ -4,7 +4,7 @@
 #include "Entity.hpp"
 
 
-Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name):
+Entity::Entity(Vec2f pos, Vec2f vel, Vec2f size, sf::Texture& texture, std::string name):
 pos(pos), vel(vel), size(size), dead(false), health(100)
 {
     
@@ -15,22 +15,17 @@ pos(pos), vel(vel), size(size), dead(false), health(100)
     this->hitbox.setSize(size);
     this->hitbox.setOutlineColor(sf::Color::Red);
     this->hitbox.setOutlineThickness(1.0f);
-    if (!texturePath.empty()) {
-        if (!this->texture.loadFromFile(texturePath)) {
-            std::cerr << "ERROR: Failed to load texture from " << texturePath << std::endl;
-        } else {
-            this->sprite.setTexture(this->texture);
-        }
-    }
-    
+
+    this->sprite.setTexture(texture);
+
 }
 
 // Animation constructor
 Entity::Entity(
-    Vec2f pos, Vec2f vel, Vec2f size, std::string texturePath, std::string name, 
+    Vec2f pos, Vec2f vel, Vec2f size, sf::Texture& texture, std::string name, 
     int frameCount, int frameSize, Vec2i frameStart, int animationTime
 ):
-Entity(pos, vel, size, texturePath, name)
+Entity(pos, vel, size, texture, name)
 {   
     this->frameSize = frameSize;
     this->frameCount = frameCount; 

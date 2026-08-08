@@ -6,9 +6,10 @@
 #include "Bullet.hpp"
 #include "AudioLoader.hpp"
 #include "Game.hpp"
+#include "TextureLoader.hpp"
 
 Turret::Turret(int x, int y, int length) :
-    Entity(Vec2f(x, y), Vec2f(0, 0), Vec2f(2, length), "resources/turret.png", "Turret")
+    Entity(Vec2f(x, y), Vec2f(0, 0), Vec2f(2, length), TextureLoader::turretTexture, "Turret")
 {
     this->length = length;
     this->sprite.setOrigin(Vec2f(0, 0));
