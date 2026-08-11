@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Enemy.hpp"
+#include "Entities.hpp"
+#include "Explosion.hpp"
 #include "TextureLoader.hpp"
 
 
@@ -15,4 +17,9 @@ Enemy::Enemy(Vec2f pos) :
 void Enemy::update() {
     this->vel = Vec2f(rand() % 50, rand() % 50);
     Entity::update();
+}
+
+void Enemy::die() {
+    this->dead = true;
+    Entities::create<Explosion>(Vec2f(this->pos.x + this->size.x / 2, this->pos.y + this->size.y / 2), 200, 200, sf::milliseconds(250));
 }

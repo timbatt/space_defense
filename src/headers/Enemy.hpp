@@ -11,4 +11,5 @@ public:
     Enemy(Vec2f pos);
 
     void update();
+    void die();
 };

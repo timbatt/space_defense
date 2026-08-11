@@ -38,9 +38,9 @@ void Bullet::die() {
 
 
 void Bullet::explode() {
-    int particleCount = 200;
-    int particleSpeed = 200;
+    int particleCount = 100;
+    int particleSpeed = 50;
     
-    Entities::create<Explosion>(this->pos, particleCount, particleSpeed, sf::milliseconds(250));
+    Entities::create<Explosion>(this->pos, particleCount, particleSpeed, sf::milliseconds(50));
     AudioLoader::explosion.play();
 }

@@ -9,11 +9,13 @@
 #include "TextureLoader.hpp"
 
 Ship::Ship(int x, int y, int length) :
-    Entity(Vec2f(x, y), Vec2f(0, 0), Vec2f(3, length), TextureLoader::ShipTexture, "Ship")
+    Entity(Vec2f(x, y), Vec2f(0, 0), Vec2f(30, 30), TextureLoader::ShipTexture, "Ship")
 {
-    this->length = length;
-    this->sprite.setOrigin(Vec2f(2, 0));
-    this->hitbox.setOrigin(Vec2f(2, 0));
+    this->length = 30;
+    this->sprite.scale(Vec2f(2, 2));
+    this->hitbox.scale(Vec2f(1.75, 1.75));
+    this->sprite.setOrigin(Vec2f(15, 25));
+    this->hitbox.setOrigin(Vec2f(15, 25));
 };
 
 Vec2f Ship::getMuzzlePosition() {
@@ -40,8 +42,8 @@ void Ship::update() {
     // Calculate angle in radians between line and mouse position
     this->angleRads = std::atan2(worldMousePos.y - pos.y, worldMousePos.x - pos.x);
     this->angle = angleRads * 180.0f / M_PI;
-    this->sprite.setRotation(this->angle);
-    this->hitbox.setRotation(this->angle - 90);
+    this->sprite.setRotation(this->angle + 90);
+    this->hitbox.setRotation(this->angle);
 
     this->muzzlePos = this->getMuzzlePosition();
 
