@@ -1,4 +1,4 @@
-# WIP Tower Defense Game - C++ with SFML
+# WIP Space Defense Game - C++ with SFML
 
 ## Implementation List (things that need doing):
 
@@ -48,8 +48,8 @@ You need a C++ compiler and [SFML SDK](https://www.sfml-dev.org/download/) insta
 
 #### Clone and Compile
 ```
-git clone https://github.com/timbatt/tower_defense
-cd tower_defense
+git clone https://github.com/timbatt/space_defense
+cd space_defense
 make
 ```
 
