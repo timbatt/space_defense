@@ -10,17 +10,23 @@
 // Initialize static game variables
 float Game::timeDelta;
 sf::Clock Game::clock;
-sf::RenderWindow Game::window(sf::VideoMode(Settings::WINDOW_W, Settings::WINDOW_H), Settings::NAME);
-
 bool Game::doShowHitboxes = false;
 
+// Window settings
+sf::FloatRect Game::windowViewRect;
+sf::RenderWindow Game::window(sf::VideoMode(Settings::WINDOW_W, Settings::WINDOW_H), Settings::NAME);
 
 void Game::init() {
-    Game::window.setFramerateLimit(Settings::FRAME_RATE);
-    Game::window.setSize(Vec2u(Settings::WINDOW_W, Settings::WINDOW_H));
-    Game::resetTimeDelta();
     AudioLoader::load();
     TextureLoader::loadTextures();
+    
+    Game::windowViewRect = sf::FloatRect(0, 0, Settings::WINDOW_W, Settings::WINDOW_H);
+    Game::window.setFramerateLimit(Settings::FRAME_RATE);
+    Game::window.setSize(Vec2u(Settings::WINDOW_W, Settings::WINDOW_H));
+    Game::window.setView(sf::View(Game::windowViewRect));
+    
+    
+    Game::resetTimeDelta();
 }
 
 void Game::resetTimeDelta() {

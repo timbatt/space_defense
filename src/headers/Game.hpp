@@ -8,6 +8,7 @@ public:
     static sf::Clock clock;
     static float timeDelta;
     static sf::RenderWindow window;
+    static sf::FloatRect windowViewRect;
 
     static bool doShowHitboxes;
 
