@@ -13,3 +13,20 @@ json read_json_file(const char* path) {
     json parsed = json::parse(fileStream);
     return parsed;
 }
+
+
+void print_memory_usage() {
+    FILE* fp = fopen("/proc/self/status", "r");
+    if (!fp) return;
+
+    char line[128];
+    while (fgets(line, sizeof(line), fp)) {
+        // VmRSS tracks the actual physical RAM in use
+        if (strncmp(line, "VmRSS:", 6) == 0) {
+            std::cout << line;
+            break;
+        }
+    }
+    fclose(fp);
+}
+
