@@ -5,7 +5,7 @@
 #include "Audio.hpp"
 #include "shorthand.hpp"
 
-class Turret : public Entity {
+class Ship : public Entity {
 private:
     sf::Time cooldown = sf::milliseconds(0);
     
@@ -16,7 +16,7 @@ public:
     Vec2f muzzlePos;
 
 
-    Turret(int x, int y, int length);
+    Ship(int x, int y, int length);
     void update();
 
     Vec2f getMuzzlePosition();

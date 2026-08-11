@@ -15,7 +15,7 @@
 - Overall animation
 - - Set animation time in seconds, set animation frame count from sprite-sheet, loop while entity is alive
 - Event-Specific Animation
-- - Trigger specific animations upon different events (turret fire, entity dies, etc...)
+- - Trigger specific animations upon different events (Ship fire, entity dies, etc...)
 
 ### Enemies
 - Create different enemy types

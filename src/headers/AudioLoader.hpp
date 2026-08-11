@@ -7,7 +7,7 @@
 class AudioLoader {
 public:
     static ConcurrentAudio explosion;
-    static ConcurrentAudio turretFire;
+    static ConcurrentAudio ShipFire;
 
     static void load();
 };

@@ -6,7 +6,7 @@
 class TextureLoader {
 public:
     static sf::Texture particleTexture;
-    static sf::Texture turretTexture;
+    static sf::Texture ShipTexture;
     static sf::Texture enemyTexture;
     static sf::Texture nullTexture;
 

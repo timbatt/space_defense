@@ -8,7 +8,7 @@
 #include "Game.hpp"
 #include "Entities.hpp"
 #include "Particles.hpp"
-#include "Turret.hpp"
+#include "Ship.hpp"
 #include "Enemy.hpp"
 
 
@@ -22,7 +22,7 @@ int main()
 
     // Game::showHitboxes();
         
-    Entities::create<Turret>(Settings::WINDOW_W / 2, Settings::WINDOW_H / 2, 64);
+    Entities::create<Ship>(Settings::WINDOW_W / 2, Settings::WINDOW_H / 2, 64);
 
     
 

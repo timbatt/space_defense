@@ -2,9 +2,9 @@
 
 
 ConcurrentAudio AudioLoader::explosion;
-ConcurrentAudio AudioLoader::turretFire;
+ConcurrentAudio AudioLoader::ShipFire;
 
 void AudioLoader::load() {
     explosion.load("resources/audio/shotgun.wav");
-    turretFire.load("resources/audio/turret.wav");
+    ShipFire.load("resources/audio/turret.wav");
 }
