@@ -4,6 +4,7 @@
 #include <string.h>
 #include <iostream>
 
+#include "Settings.hpp"
 #include "Game.hpp"
 #include "Entities.hpp"
 #include "Particles.hpp"
@@ -31,6 +32,7 @@ void print_memory_usage() {
 int main()
 {
 
+    Settings::init();
     Game::init();
     Entities::init();
     Particles::init();
@@ -65,7 +67,7 @@ int main()
     /* Main Loop */
     while (Game::window.isOpen())
     {
-        print_memory_usage();
+        // print_memory_usage();
 
         /* Events */
         sf::Event event;

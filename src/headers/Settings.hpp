@@ -1,15 +1,18 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-
+#include "utils.hpp"
 
 class Settings {
 public:
+    static json JSON;
+    static const char* SETTINGS_PATH;
     static const char* NAME;
-    static const int WINDOW_W;
-    static const int WINDOW_H;
-    static const int FRAME_RATE;
+    static int WINDOW_W;
+    static int WINDOW_H;
+    static int FRAME_RATE;
+    static int MAX_ENTITY_PER_TYPE;
+    static int MAX_PARTICLE_COUNT;
 
-    static const int MAX_ENTITY_PER_TYPE;
-    static const int MAX_PARTICLE_COUNT;
+    static void init();
 };

@@ -3,16 +3,8 @@
 #include "Game.hpp"
 #include "AudioLoader.hpp"
 #include "TextureLoader.hpp"
+#include "shorthand.hpp"
 
-
-
-// Setup Settings
-const char* Settings::NAME = "Tower Defense";
-const int Settings::WINDOW_H = 800;
-const int Settings::WINDOW_W = 1200;
-const int Settings::FRAME_RATE = 60;
-const int Settings::MAX_ENTITY_PER_TYPE = 128;
-const int Settings::MAX_PARTICLE_COUNT = 1024;
 
 
 // Initialize static game variables
@@ -25,6 +17,7 @@ bool Game::doShowHitboxes = false;
 
 void Game::init() {
     Game::window.setFramerateLimit(Settings::FRAME_RATE);
+    Game::window.setSize(Vec2u(Settings::WINDOW_W, Settings::WINDOW_H));
     Game::resetTimeDelta();
     AudioLoader::load();
     TextureLoader::loadTextures();

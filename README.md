@@ -9,6 +9,7 @@
 
 ### JSON Settings Loader
 - Read from JSON file to configure settings upon game startup
+- Uses https://github.com/nlohmann/json for parsing JSON
 
 ### Create Animation Manager for Entities
 - Overall animation
