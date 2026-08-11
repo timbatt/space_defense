@@ -20,7 +20,7 @@ int main()
     Entities::init();
     Particles::init();
 
-    Game::showHitboxes();
+    // Game::showHitboxes();
         
     Entities::create<Turret>(Settings::WINDOW_W / 2, Settings::WINDOW_H / 2, 64);
 
@@ -42,8 +42,8 @@ int main()
     // fire->setAnimation(frameCount, frameSize, frameStart, animationTime);
     // fire->sprite.scale(Vec2f(3, 3));
 
-    for (int i = 1; i <= 20; i++) {
-        Enemy* enemy = Entities::create<Enemy>(Vec2f((50 * i) - 200, 100));
+    for (int i = 1; i <= 5; i++) {
+        Enemy* enemy = Entities::create<Enemy>(Vec2f((100 * i) - 200, 100));
         // enemy->setAnimation(frameCount, frameSize, frameStart, animationTime);
     }
 
