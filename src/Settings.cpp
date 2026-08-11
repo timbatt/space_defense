@@ -2,9 +2,9 @@
 #include "Settings.hpp"
 
 
-const char* Settings::SETTINGS_PATH = "settings.json";
+std::string Settings::SETTINGS_PATH = "settings.json";
 
-const char* Settings::NAME = "Tower Defense";
+std::string Settings::NAME = "";
 int Settings::FRAME_RATE = 60;
 int Settings::WINDOW_H = 800;
 int Settings::WINDOW_W = 1200;
@@ -19,6 +19,7 @@ void Settings::init() {
     Settings::JSON = read_json_file(Settings::SETTINGS_PATH);
     
     
+    Settings::NAME = Settings::JSON.at("NAME");
     Settings::FRAME_RATE = Settings::JSON.at("FRAME_RATE");
     Settings::WINDOW_W = Settings::JSON.at("WINDOW_W");
     Settings::WINDOW_H = Settings::JSON.at("WINDOW_H");

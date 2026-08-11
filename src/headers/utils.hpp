@@ -4,6 +4,6 @@
 
 using json = nlohmann::json;
 
-json read_json_file(const char* path);
+json read_json_file(std::string path);
 
 void print_memory_usage();

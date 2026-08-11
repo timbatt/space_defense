@@ -6,8 +6,8 @@
 class Settings {
 public:
     static json JSON;
-    static const char* SETTINGS_PATH;
-    static const char* NAME;
+    static std::string SETTINGS_PATH;
+    static std::string NAME;
     static int WINDOW_W;
     static int WINDOW_H;
     static int FRAME_RATE;

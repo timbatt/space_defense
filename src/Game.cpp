@@ -24,6 +24,7 @@ void Game::init() {
     Game::window.setFramerateLimit(Settings::FRAME_RATE);
     Game::window.setSize(Vec2u(Settings::WINDOW_W, Settings::WINDOW_H));
     Game::window.setView(sf::View(Game::windowViewRect));
+    Game::window.setTitle(Settings::NAME);
     
     
     Game::resetTimeDelta();

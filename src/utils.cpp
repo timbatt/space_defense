@@ -3,7 +3,7 @@
 #include "utils.hpp"
 
 
-json read_json_file(const char* path) {
+json read_json_file(std::string path) {
     std::ifstream fileStream(path);
 
     if (!fileStream.is_open()) {
